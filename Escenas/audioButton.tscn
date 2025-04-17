@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmec2p13wgtt"]
+
+[ext_resource type="AudioStream" uid="uid://cayd7d1wnqrak" path="res://Assets/sounds/beep01.ogg" id="1_istcb"]
+
+[sub_resource type="GDScript" id="GDScript_6tpjy"]
+script/source = "extends Button
+
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_pressed() -> void:
+	audio_stream_player.playing = true
+"
+
+[node name="Button" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "boton"
+script = SubResource("GDScript_6tpjy")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_istcb")
+volume_db = -14.991
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

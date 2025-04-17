@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://126a21l8a0u4"]
+
+[ext_resource type="Script" path="res://button.gd" id="1_h21xe"]
+[ext_resource type="AudioStream" uid="uid://cayd7d1wnqrak" path="res://Assets/sounds/beep01.ogg" id="3_4xq85"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(60, 60)
+offset_left = 94.0
+offset_top = 192.0
+offset_right = 154.0
+offset_bottom = 252.0
+toggle_mode = true
+button_pressed = true
+expand_icon = true
+script = ExtResource("1_h21xe")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4xq85")
+volume_db = -19.661
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
