@@ -104,10 +104,19 @@ func _on_suma_button_pressed() -> void:
 	quantityInt = int(quantity)
 	#MULTIPLICA EL VALOR DE COIN/BILL ACTUAL POR LA CANTIDAD
 	subTotal = coinValue * quantityInt
-	
+		
 	#ACUMULA EL IMPORTE PARCIAL A LA ESPERA DE IR AGREGANDO MÁS
 	contador = contador + subTotal
-	
+	if contador >0.01 and contador <=50:
+		msg_sigue_asi()
+	if contador > 50 and contador <=100 :
+		msg_ahorra_mas()
+	elif contador >100 and contador <=500:
+		msg_buen_ahorro() 
+	elif contador >500 and contador <=1000 :
+		msg_papa_rico()
+	elif contador >1000 :
+		msg_robo_banco()
 	
 	#INFORMA DEL RESULTADO. TO/DO MOSTRAR ESTO MISMO EN LA APP
 	#antes, identifica si se trata de una moneda o billete para adecuar el mensaje que mostrará.
@@ -148,26 +157,54 @@ func reiniciar_variables():
 	quantity = ""
 	
 # MENSAJES	
+func msg_sigue_asi():
+	var msg: String = ("Tus primeros ahorros. Sigue así, ¡de mica en mica s'omple la pica!")
+	print (msg)
+	$VBoxContainer/Msg03.text = msg	
+func msg_ahorra_mas():
+	var msg: String = ("Ánimo, ya tienes algo ahorrado. ¡A por el siguiente logro!")
+	print (msg)
+	$VBoxContainer/Msg03.text = msg
+func msg_buen_ahorro():
+	var msg: String = ("¡Felicidades! ¡Has logrado reunir una buena cantidad!")
+	print (msg)
+	$VBoxContainer/Msg03.text = msg
+func msg_papa_rico():
+	var msg: String = ("¡Vaya, qué pastón! ¿Tus padres son ricos?")
+	print (msg)
+	$VBoxContainer/Msg03.text = msg
+func msg_robo_banco():
+	var msg: String = ("¡Pero bueno! ¿Acaso has robado un banco?   ¡¡¡Policía!!!")
+	print (msg)
+	$VBoxContainer/Msg03.text = msg	
+
+	
+	
+	
+	
 func msg_cent_coins():
 	#los convierte a entero multiplicando por 100 para que se vea mejor el mensaje
 	var centimos = int(coinValue * 100)
-	var msg1: String = ("\nHas sumado " + str(quantity) + " monedas de " + str(centimos) + " céntimos")
-	var msg2: String = ("Llevas ahorrado " + str(contador) + " Euros " )
+	var total : float = (float(quantity)* float(coinValue))
+	var msg1: String = ("\nHas sumado " + str(quantity) + " monedas de " + str(centimos) + " céntimos = " + str(total) + " Euros.")
+	var msg2: String = ("Llevas ahorrado " + str(contador) + " Euros!! " )
 	print (msg1)
 	print (msg2)
 	$VBoxContainer/Msg01.text = msg1
 	$VBoxContainer/Msg02.text = msg2
 	
 func msg_euro_coins():
-	var msg1: String = ("\nHas sumado " + str(quantity) + " monedas de " + str(coinValue) + " Euro" )
-	var msg2: String = ("Llevas ahorrado " + str(contador) + " Euros " )
+	var total : float = (float(quantity)* float(coinValue)) 
+	var msg1: String = ("\nHas sumado " + str(quantity) + " monedas de " + str(coinValue) + " Euro = " + str(total) + " Euros.")
+	var msg2: String = ("Llevas ahorrado " + str(contador) + " Euros!! " )
 	print (msg1)
 	print (msg2)
 	$VBoxContainer/Msg01.text = msg1
 	$VBoxContainer/Msg02.text = msg2
 func msg_euro_bills():
-	var msg1: String = ("\nHas sumado " + str(quantity) + " billetes de " + str(coinValue) + " Euros" )
-	var msg2: String = ("Llevas ahorrado " + str(contador) + " Euros " )
+	var total : float = (float(quantity)* float(coinValue))
+	var msg1: String = ("\nHas sumado " + str(quantity) + " billetes de " + str(coinValue) + " Euros = " + str(total) + " Euros." )
+	var msg2: String = ("Llevas ahorrado " + str(contador) + " Euros!! " )
 	print (msg1)
 	print (msg2)
 	$VBoxContainer/Msg01.text = msg1

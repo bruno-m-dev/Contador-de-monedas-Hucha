@@ -332,6 +332,11 @@ custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 horizontal_alignment = 1
 
+[node name="Msg03" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+horizontal_alignment = 1
+
 [node name="Beep" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_sym2a")
 volume_db = -12.418
@@ -350,12 +355,12 @@ stream = ExtResource("17_bx5yy")
 stream = ExtResource("18_e7fsc")
 volume_db = -16.04
 
-[connection signal="pressed" from="VBoxContainer/CoinsGrid/CBOneCent" to="." method="_on_check_box_pressed"]
 [connection signal="pressed" from="VBoxContainer/CoinsGrid/CBOneCent" to="." method="_on_cb_one_cent_pressed"]
+[connection signal="pressed" from="VBoxContainer/CoinsGrid/CBOneCent" to="." method="_on_check_box_pressed"]
 [connection signal="pressed" from="VBoxContainer/CoinsGrid/CBTwoCent" to="." method="_on_check_box_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/CoinsGrid/CBTwoCent" to="." method="_on_cb_two_cent_pressed"]
-[connection signal="pressed" from="VBoxContainer/CoinsGrid/CBFiveCent" to="." method="_on_cb_five_cent_pressed"]
 [connection signal="pressed" from="VBoxContainer/CoinsGrid/CBFiveCent" to="." method="_on_check_box_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/CoinsGrid/CBFiveCent" to="." method="_on_cb_five_cent_pressed"]
 [connection signal="pressed" from="VBoxContainer/CoinsGrid/CBTenCent" to="." method="_on_cb_ten_cent_pressed"]
 [connection signal="pressed" from="VBoxContainer/CoinsGrid/CBTwentyCent" to="." method="_on_cb_twenty_cent_pressed"]
 [connection signal="pressed" from="VBoxContainer/CoinsGrid/CBFiftyCent" to="." method="_on_cb_fifty_cent_pressed"]
